@@ -9,12 +9,11 @@ import {
   PhoneIcon,
 } from "@/components/icons";
 import { Carousel } from "@/components/carousel";
-import { LegalLinks } from "@/components/legal-links";
 import { PostCard } from "@/components/post-card";
 import { RevealOnScroll } from "@/components/reveal-on-scroll";
 import { StickyBar } from "@/components/sticky-bar";
 import { gallery, photos, type Photo } from "@/lib/photos";
-import { site } from "@/lib/site";
+import { instagramFollowersText, site } from "@/lib/site";
 import { getPosts } from "@/lib/wordpress";
 import logoAcuarela from "../../public/logo-acuarela.jpg";
 
@@ -64,6 +63,8 @@ const rooms: { title: string; text: string; main: Photo; detail: Photo }[] = [
   },
 ];
 
+const followers = instagramFollowersText();
+
 const contact = [
   { href: site.whatsapp, icon: ChatIcon, label: "WhatsApp", external: true },
   { href: `tel:${site.phone}`, icon: PhoneIcon, label: "Llamar" },
@@ -71,7 +72,7 @@ const contact = [
   {
     href: site.instagram,
     icon: InstagramIcon,
-    label: "Instagram",
+    label: followers ? `Instagram · ${followers}` : "Instagram",
     external: true,
   },
 ];
@@ -361,6 +362,11 @@ export default function Home() {
                 >
                   <InstagramIcon className="size-4" />
                   Más en Instagram
+                  {followers && (
+                    <span className="font-normal text-olive-light">
+                      · {followers}
+                    </span>
+                  )}
                 </a>
               </>
             }
@@ -413,10 +419,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="py-8 text-center text-sm">
-        {site.name} · Vivienda vacacional pet friendly · Asturias
-        <LegalLinks />
-      </footer>
     </>
   );
 }

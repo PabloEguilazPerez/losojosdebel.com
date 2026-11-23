@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { InstagramIcon } from "@/components/icons";
-import { LegalLinks } from "@/components/legal-links";
 import { site } from "@/lib/site";
 
-// Header and footer for the content pages coming from WordPress.
+// Header for the content pages coming from WordPress (the footer is in the root layout).
 export function SiteShell({ children }: { children: React.ReactNode }) {
   return (
     <>
@@ -40,11 +39,6 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         </div>
       </header>
       <main className="flex-1">{children}</main>
-      <footer className="border-t border-olive/10 py-8 text-center text-sm">
-        <p className="font-seasons text-xl text-olive">{site.name}</p>
-        <p className="mt-1">Vivienda vacacional pet friendly · Asturias</p>
-        <LegalLinks />
-      </footer>
     </>
   );
 }

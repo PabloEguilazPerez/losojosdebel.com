@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Roboto } from "next/font/google";
+import { SiteFooter } from "@/components/site-footer";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -52,7 +53,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         {/* "the-seasons" is an Adobe Fonts font served by the site's Typekit kit */}
         <link rel="stylesheet" href="https://use.typekit.net/ugk4ull.css" />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        {children}
+        <SiteFooter />
+      </body>
     </html>
   );
 }
